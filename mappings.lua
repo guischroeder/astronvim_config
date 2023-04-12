@@ -42,5 +42,9 @@ return {
     -- better indent
     ["<"] = "<gv",
     [">"] = ">gv",
+
+    -- move lines
+    ["J"] = ":m '>+1<CR>gv=gv",
+    ["K"] = ":m '<-2<CR>gv=gv",
   }
 }
