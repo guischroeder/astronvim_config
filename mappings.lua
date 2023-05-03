@@ -17,6 +17,9 @@ return {
     ["<C-d>"] = "<C-d>zz",
     ["<C-u>"] = "<C-u>zz",
 
+    -- copy whole file
+    ["<leader>y"] = '[["+y]]',
+
     -- heirline buffer
     ["<leader>bD"] = {
       function()
