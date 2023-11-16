@@ -8,9 +8,6 @@ return {
     ["<C-d>"] = "<C-d>zz",
     ["<C-u>"] = "<C-u>zz",
 
-    -- paste over selected text without ynking it
-    ["p"] = { '"_dP' },
-
     -- copy whole file
     ["<leader>y"] = '[["+y]]',
 
