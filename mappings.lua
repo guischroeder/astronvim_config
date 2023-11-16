@@ -1,40 +1,52 @@
--- Mapping data with "desc" stored directly by vim.keymap.set().
---
--- Please use this mappings table to set keyboard mapping since this is the
--- lower level configuration and more robust one. (which-key will
--- automatically pick-up stored data by this setting.)
 return {
-  -- first key is the mode
   n = {
-    -- second key is the lefthand side of the map
+    -- better search
+    ["n"] = "nzzzv",
+    ["N"] = "Nzzzv",
 
-    -- navigate buffer tabs with `H` and `L`
-    -- L = {
-    --   function() require("astronvim.utils.buffer").nav(vim.v.count > 0 and vim.v.count or 1) end,
-    --   desc = "Next buffer",
-    -- },
-    -- H = {
-    --   function() require("astronvim.utils.buffer").nav(-(vim.v.count > 0 and vim.v.count or 1)) end,
-    --   desc = "Previous buffer",
-    -- },
+    -- better scroll
+    ["<C-d>"] = "<C-d>zz",
+    ["<C-u>"] = "<C-u>zz",
 
-    -- mappings seen under group name "Buffer"
-    ["<leader>bD"] = {
+    -- paste over selected text without ynking it
+    ["p"] = { '"_dP' },
+
+    -- copy whole file
+    ["<leader>y"] = '[["+y]]',
+
+    -- copy relative path
+    ["<leader>yrp"] = {
       function()
-        require("astronvim.utils.status").heirline.buffer_picker(
-          function(bufnr) require("astronvim.utils.buffer").close(bufnr) end
-        )
+        local path = vim.fn.expand "%:."
+        vim.fn.setreg("+", path)
+        vim.notify('Copied "' .. path .. '" to the clipboard!')
       end,
-      desc = "Pick to close",
     },
-    -- tables with the `name` key will be registered with which-key if it's installed
-    -- this is useful for naming menus
-    ["<leader>b"] = { name = "Buffers" },
-    -- quick save
-    -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
+
+    -- fast saving/exiting
+    ["<leader>w"] = ":write!<CR>",
+    ["<leader>q"] = ":q!<CR>",
+
+    -- telescope
+    ["gD"] = "<CMD>Telescope lsp_references show_line=false<CR>",
+
+    -- trouble
+    ["<leader>tt"] = "<CMD> TroubleToggle<CR>",
+    ["<leader>tw"] = "<CMD> TroubleToggle workspace_diagnostics<CR>",
+    ["<leader>td"] = "<CMD> TroubleToggle document_diagnostics<CR>",
   },
-  t = {
-    -- setting a mapping to false will disable it
-    -- ["<esc>"] = false,
+
+  v = {
+    -- better indent
+    ["<"] = "<gv",
+    [">"] = ">gv",
+
+    -- move lines
+    ["J"] = ":m '>+1<CR>gv=gv",
+    ["K"] = ":m '<-2<CR>gv=gv",
+  },
+
+  i = {
+    ["jk"] = "<ESC>",
   },
 }
