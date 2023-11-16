@@ -27,6 +27,9 @@ return {
     ["<leader>w"] = ":write!<CR>",
     ["<leader>q"] = ":q!<CR>",
 
+    -- delete current buffer
+    ["<leader>bd"] = ":bd<CR>",
+
     -- telescope
     ["gD"] = "<CMD>Telescope lsp_references show_line=false<CR>",
 
