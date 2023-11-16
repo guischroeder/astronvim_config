@@ -31,9 +31,9 @@ return {
     ["gD"] = "<CMD>Telescope lsp_references show_line=false<CR>",
 
     -- trouble
-    ["<leader>tt"] = "<CMD> TroubleToggle<CR>",
-    ["<leader>tw"] = "<CMD> TroubleToggle workspace_diagnostics<CR>",
-    ["<leader>td"] = "<CMD> TroubleToggle document_diagnostics<CR>",
+    ["<leader>xt"] = "<CMD> TroubleToggle<CR>",
+    ["<leader>xw"] = "<CMD> TroubleToggle workspace_diagnostics<CR>",
+    ["<leader>xd"] = "<CMD> TroubleToggle document_diagnostics<CR>",
   },
 
   v = {
